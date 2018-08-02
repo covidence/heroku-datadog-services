@@ -1,0 +1,43 @@
+{
+  "name": "heroku-datadog-services",
+  "description": "Establish Datadog monitoring of Heroku add-ons or other URL-based services",
+  "keywords": [
+    "datadog",
+    "metrics",
+    "heroku",
+    "env",
+    "postgres",
+    "postgresql",
+    "elasticsearch"
+  ],
+  "website": "https://github.com/covidence/heroku-datadog-services",
+  "repository": "https://github.com/covidence/heroku-datadog-services",
+  "success_url": "/",
+  "env": {
+    "DD_API_KEY": {
+      "descriptions": "Datadog API key (https://app.datadoghq.com/account/settings#api)",
+      "required": true
+    },
+    "DD_APM_ENABLED": { "value": "false" },
+    "DD_HOSTNAME": {
+      "description": "Hostname for this agent; if blank, will be calculated from dyno name",
+      "value": "service-metrics-collector"
+    },
+    "DATABASE_URL": {
+      "description": "Set this or any other *_URL variable to have Datadog manage the service behind it, if supported"
+    },
+    "DATABASE_URL_TAGS": {
+      "description": "Tag metrics from DATABASE_URL with these tags; any *_TAG var will be applied to the corresponding service variable"
+    },
+    "ELASTICSEARCH_URL": {
+      "description": "Set this or any other *_URL variable to have Datadog manage the service behind it, if supported"
+    },
+    "ELASTICSEARCH_URL_TAGS": {
+      "description": "Tag metrics from ELASTICSEARCH_URL with these tags; any *_TAG var will be applied to the corresponding service variable"
+    }
+  },
+  "buildpacks": [
+    {"url": "https://github.com/DataDog/heroku-buildpack-datadog"},
+    {"url": "https://github.com/ryandotsmith/null-buildpack"}
+  ]
+}
