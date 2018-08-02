@@ -11,7 +11,7 @@ ENV.keys.grep(/_URL$/).each do |key|
   tags = ENV["#{key}_TAGS"].to_s.split(/\s+/)
 
   if uri.scheme =~ /^postgres/
-    puts "Configuring Postgres for ElasticSearch: #{uri.to_s.gsub(uri.userinfo, '****:****')}"
+    puts "Configuring Datadog for Postgres: #{uri.to_s.gsub(uri.userinfo, '****:****')}"
 
     instances << {
       'host' => uri.host,
@@ -26,8 +26,8 @@ ENV.keys.grep(/_URL$/).each do |key|
 end
 
 if instances.any?
-  FileUtils.mkdir_p('datadog/conf.d/postgres.d/')
-  File.open('datadog/conf.d/postgres.d/conf.yaml', 'w') do |f|
+  FileUtils.mkdir_p('/app/datadog/conf.d/')
+  File.open('datadog/conf.d/postgres.yaml', 'w') do |f|
     f.write YAML.dump({
       'init_config' => nil,
       'instances' => instances

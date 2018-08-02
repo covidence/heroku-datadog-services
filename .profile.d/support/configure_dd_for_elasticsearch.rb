@@ -37,8 +37,11 @@ ENV.keys.grep(/_URL$/).each do |key|
 end
 
 if instances.any?
-  FileUtils.mkdir_p('datadog/conf.d/elastic.d/')
-  File.open('datadog/conf.d/elastic.d/conf.yaml', 'w') do |f|
-    f.write YAML.dump({'init_config' => nil, 'instances' => instances})
+  FileUtils.mkdir_p('/app/datadog/conf.d/')
+  File.open('/app/datadog/conf.d/elastic.yaml', 'w') do |f|
+    f.write YAML.dump({
+      'init_config' => nil,
+      'instances' => instances
+    })
   end
 end
