@@ -13,6 +13,8 @@ ENV.keys.grep(/_URL$/).each do |key|
   if uri.scheme =~ /^postgres/
     puts "Configuring Datadog for Postgres: #{uri.to_s.gsub(uri.userinfo, '****:****')}"
 
+    tags << "host:#{uri.host}"
+
     instances << {
       'host' => uri.host,
       'port' => uri.port,
