@@ -18,22 +18,30 @@
       "descriptions": "Datadog API key (https://app.datadoghq.com/account/settings#api)",
       "required": true
     },
-    "DD_APM_ENABLED": { "value": "false" },
+    "DD_APM_ENABLED": {
+      "value": "false",
+      "required": false
+    },
     "DD_HOSTNAME": {
       "description": "Hostname for this agent; if blank, will be calculated from dyno name",
-      "value": "service-metrics-collector"
+      "value": "service-metrics-collector",
+      "required": false
     },
     "DATABASE_URL": {
-      "description": "Set this or any other *_URL variable to have Datadog manage the service behind it, if supported"
+      "description": "Set this or any other *_URL variable to have Datadog manage the service behind it, if supported",
+      "required": false
     },
     "DATABASE_URL_TAGS": {
-      "description": "Tag metrics from DATABASE_URL with these tags; any *_TAG var will be applied to the corresponding service variable"
+      "description": "Tag metrics from DATABASE_URL with these tags; any *_TAG var will be applied to the corresponding service variable",
+      "required": false
     },
     "ELASTICSEARCH_URL": {
-      "description": "Set this or any other *_URL variable to have Datadog manage the service behind it, if supported"
+      "description": "Set this or any other *_URL variable to have Datadog manage the service behind it, if supported",
+      "required": false
     },
     "ELASTICSEARCH_URL_TAGS": {
-      "description": "Tag metrics from ELASTICSEARCH_URL with these tags; any *_TAG var will be applied to the corresponding service variable"
+      "description": "Tag metrics from ELASTICSEARCH_URL with these tags; any *_TAG var will be applied to the corresponding service variable",
+      "required": false
     }
   },
   "buildpacks": [
