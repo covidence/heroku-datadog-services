@@ -23,7 +23,12 @@ ENV.keys.grep(/_URL$/).each do |key|
     resp = get(uri + '/_cluster/health')
 
     if resp.code.to_i / 100 == 2
-      puts "Configuring Datadog for ElasticSearch: #{uri.to_s.gsub(uri.userinfo, '****:****')}"
+      clean_url = uri.to_s.gsub(uri.userinfo, '****:****')
+      puts "Configuring Datadog for ElasticSearch: #{clean_url}"
+
+      # DD's ES monitoring adds a url tag which includes the credentials; let's
+      # see if we can't override it.
+      tags << "url:#{clean_url}"
 
       instances << {
         'url' => uri.to_s,
