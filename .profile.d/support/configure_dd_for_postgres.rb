@@ -8,9 +8,11 @@ instances = []
 
 ENV.keys.grep(/_URL$/).each do |key|
   uri = URI(ENV[key]) rescue next
+  tags = ENV["#{key}_TAGS"].to_s.split(/\s+/)
 
   if uri.scheme =~ /^postgres/
-    tags = ENV["#{key}_TAGS"].to_s.split(/\s+/)
+    puts "Configuring Postgres for ElasticSearch: #{uri.to_s.gsub(uri.userinfo, '****:****')}"
+
     instances << {
       'host' => uri.host,
       'port' => uri.port,

@@ -17,12 +17,14 @@ end
 
 ENV.keys.grep(/_URL$/).each do |key|
   uri = URI(ENV[key]) rescue next
+  tags = ENV["#{key}_TAGS"].to_s.split(/\s+/)
 
   if uri.scheme =~ /^https?/
     resp = get(uri + '/_cluster/health')
 
     if resp.code.to_i / 100 == 2
-      tags = ENV["#{key}_TAGS"].to_s.split(/\s+/)
+      puts "Configuring Datadog for ElasticSearch: #{uri.to_s.gsub(uri.userinfo, '****:****')}"
+
       instances << {
         'url' => uri.to_s,
         'cluster_stats' => true,
