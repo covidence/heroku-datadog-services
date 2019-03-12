@@ -27,8 +27,8 @@ ENV.keys.grep(/_SERVERS$/).each do |key|
 end
 
 if instances.any?
-  FileUtils.mkdir_p('/app/datadog/conf.d/mcache.d')
-  File.open('/app/datadog/conf.d/mcache.d/conf.yaml', 'w') do |f|
+  FileUtils.mkdir_p('/app/datadog/conf.d')
+  File.open('/app/datadog/conf.d/mcache.yaml', 'w') do |f|
     f.write YAML.dump({
       'init_config' => nil,
       'instances' => instances
