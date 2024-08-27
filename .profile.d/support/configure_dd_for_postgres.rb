@@ -20,7 +20,7 @@ ENV.keys.grep(/_URL$/).each do |key|
       'port' => uri.port,
       'username' => uri.user,
       'password' => uri.password,
-      'ssl' => true,
+      'ssl' => 'allow',
       'dbname' => uri.path.split(/^[?\/]/).detect { |p| p && !p.empty? },
       'tags' => tags,
       # Example https://github.com/DataDog/integrations-core/blob/master/postgres/datadog_checks/postgres/data/conf.yaml.example
