@@ -28,7 +28,7 @@ ENV.keys.grep(/_URL$/).each do |key|
         'metric_prefix' => 'postgresql',
         'query' => 'SELECT id FROM public.references ORDER BY id DESC LIMIT 1',
         'columns' => [
-          { 'name' => 'references_latest_id', 'type' => 'gauge' }
+          { 'name' => 'references_latest_id', 'type' => 'count' }
         ],
         'collection_interval' => 14_400 # 4 hours
       },
@@ -36,7 +36,7 @@ ENV.keys.grep(/_URL$/).each do |key|
         'metric_prefix' => 'postgresql',
         'query' => 'SELECT id FROM public.study_votes ORDER BY id DESC LIMIT 1',
         'columns' => [
-          { 'name' => 'study_votes_latest_id', 'type' => 'gauge' }
+          { 'name' => 'study_votes_latest_id', 'type' => 'count' }
         ],
         'collection_interval' => 14_400 # 4 hours
       }]
