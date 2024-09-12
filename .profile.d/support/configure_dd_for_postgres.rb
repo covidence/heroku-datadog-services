@@ -60,6 +60,7 @@ ENV.keys.grep(/_URL$/).each do |key|
           { 'name' => 'table_name', 'type' => 'tag' },
           { 'name' => 'total_bytes', 'type' => 'gauge' },
           { 'name' => 'index_bytes', 'type' => 'gauge' },
+          { 'name' => 'toast_bytes', 'type' => 'gauge' },
           { 'name' => 'table_bytes', 'type' => 'gauge' },
         ],
         'collection_interval' => 14_400 # 4 hours
