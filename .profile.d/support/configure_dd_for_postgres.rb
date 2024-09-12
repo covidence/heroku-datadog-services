@@ -43,7 +43,7 @@ ENV.keys.grep(/_URL$/).each do |key|
       {
         # Getting table size metrics to monitor
         'metric_prefix' => 'postgresql',
-        'query' => 'SELECT table_name, total_bytes, index_bytes, toast_bytes, table_bytes
+        'query' => 'SELECT table_name, total_bytes, index_bytes, coalesce(toast_bytes, 0) as toast_bytes, table_bytes
                     FROM (
                     SELECT *, total_bytes-index_bytes-coalesce(toast_bytes,0) AS table_bytes FROM (
                         SELECT c.oid,nspname AS table_schema, relname AS table_name
