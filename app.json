@@ -45,6 +45,7 @@
     }
   },
   "buildpacks": [
+    {"url": "heroku/ruby"},
     {"url": "https://github.com/DataDog/heroku-buildpack-datadog"},
     {"url": "https://github.com/ryandotsmith/null-buildpack"}
   ]
