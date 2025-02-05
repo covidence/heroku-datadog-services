@@ -70,8 +70,8 @@ ENV.keys.grep(/_URL$/).each do |key|
 end
 
 if instances.any?
-  FileUtils.mkdir_p('/app/datadog/conf.d/')
-  File.open('datadog/conf.d/postgres.yaml', 'w') do |f|
+  FileUtils.mkdir_p('/app/datadog/conf.d/postgres.d')
+  File.open('datadog/conf.d/postgres.d/conf.yaml', 'w') do |f|
     f.write YAML.dump({
       'init_config' => nil,
       'instances' => instances
